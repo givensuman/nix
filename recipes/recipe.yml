@@ -12,11 +12,11 @@ modules:
       - source: system
         destination: /
 
-  # - type: akmods
-  #   no-cache: true
-  #   base: bazzite
-  #   install:
-  #     - framework-laptop
+  - type: akmods
+    no-cache: true
+    base: bazzite
+    install:
+      - framework-laptop
 
   - type: initramfs
     no-cache: true
@@ -41,4 +41,4 @@ modules:
     dest: /etc/goose-linux
 
   - type: signing
-    # no-cache: true
+    no-cache: true
