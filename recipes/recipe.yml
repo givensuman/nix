@@ -12,11 +12,11 @@ modules:
       - source: system
         destination: /
 
-  - type: akmods
-    no-cache: true
-    base: bazzite
-    install:
-      - framework-laptop
+  # - type: akmods
+  #   no-cache: true
+  #   base: bazzite
+  #   install:
+  #     - framework-laptop
 
   - type: initramfs
     no-cache: true
