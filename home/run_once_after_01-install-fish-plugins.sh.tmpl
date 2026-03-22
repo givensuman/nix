@@ -20,9 +20,11 @@ if ! command -v fish &> /dev/null; then
 fi
 
 log_info "Setting up Fish shell plugins..."
+[[ -f "${HOME}/.config/fish/functions/fisher.fish" ]] \
+  || curl -sL https://git.io/fisher | source \
+  && fisher install
 
 # Update fish completions database
-# This ensures new functions and completions are available
 if command -v fish_update_completions &> /dev/null; then
   log_info "Rebuilding Fish completions database..."
   if fish_update_completions 2>/dev/null; then

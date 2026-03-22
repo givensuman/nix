@@ -21,7 +21,7 @@ log_info "Setting up git hooks infrastructure..."
 readonly HOOKS_DIR="${HOME}/.config/git/hooks"
 mkdir -p "${HOOKS_DIR}"
 
-log_info "Git hooks directory ready at ${HOOKS_DIR}"
+log_info "git hooks directory ready at ${HOOKS_DIR}"
 
 # Set global git config to use custom hooks directory
 if git config --global core.hooksPath "${HOOKS_DIR}" 2>/dev/null; then
@@ -30,4 +30,4 @@ else
   log_info "git config might be read-only or unavailable"
 fi
 
-log_info "Git hooks setup complete"
+log_info "git hooks setup complete"

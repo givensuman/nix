@@ -20,11 +20,11 @@ STALE_COUNT=0
 # Function to find and remove broken symlinks
 cleanup_stale_in_dir() {
   local dir="$1"
-  
+
   if [[ ! -d "$dir" ]]; then
     return
   fi
-  
+
   while IFS= read -r -d '' link; do
     if [[ -L "$link" ]] && [[ ! -e "$link" ]]; then
       log_info "Removing stale symlink: $link"
