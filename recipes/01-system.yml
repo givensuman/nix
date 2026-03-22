@@ -6,36 +6,63 @@ modules:
         - https://download.docker.com/linux/fedora/docker-ce.repo
     install:
       packages:
-        # System packages
-        - fish
-        - git
-        # System utilities
-        - bluez
-        - p7zip
-        - p7zip-plugins
-        - vlc
-        - vlc-plugin-bittorrent
-        - vlc-plugin-ffmpeg
-        - vlc-plugin-pause-click
-        - wl-clipboard
-        - util-linux
-        - wayland-protocols-devel
-        - gdisk
-        - gnome-disk-utility
-        # Container utilities
-        - docker-buildx-plugin
-        - docker-ce
-        - docker-ce-cli
-        - docker-compose-plugin
-        - containerd.io
-        - podlet
-        - podman-compose
-        - podman-remote
-        - qemu-kvm
-        - libvirt
-        - virt-manager
-        - virt-viewer
-        - virt-install
+         # System packages
+         - fish
+         - git
+         # Build tools & development essentials
+         - "@development-tools"
+         - "@development-libs"
+         - gcc
+         - gcc-c++
+         - clang
+         - make
+         - cmake
+         - autoconf
+         - automake
+         - libtool
+         - pkg-config
+         - git-core
+         - curl
+         - wget
+         - vim
+         - neovim
+         # System libraries commonly needed for builds
+         - glibc-devel
+         - libstdc++-devel
+         - ncurses-devel
+         - readline-devel
+         - openssl-devel
+         - libffi-devel
+         - zlib-devel
+         - libcurl-devel
+         - expat-devel
+         # System utilities
+         - bluez
+         - p7zip
+         - p7zip-plugins
+         - vlc
+         - vlc-plugin-bittorrent
+         - vlc-plugin-ffmpeg
+         - vlc-plugin-pause-click
+         - wl-clipboard
+         - util-linux
+         - wayland-protocols-devel
+         - gdisk
+         - gnome-disk-utility
+         # Container utilities
+         - docker-buildx-plugin
+         - docker-ce
+         - docker-ce-cli
+         - docker-compose-plugin
+         - containerd.io
+         - podlet
+         - podman-compose
+         - podman-remote
+         - qemu-kvm
+         - libvirt
+         - virt-manager
+         - virt-viewer
+         - virt-install
 
   - type: script
     snippets:
