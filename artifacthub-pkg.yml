@@ -6,7 +6,7 @@
 # https://artifacthub.io/packages/keda-scaler/keda-official-external-scalers/external-scaler-azure-cosmos-db?modal=install
 
 name: goose
-displayName: goose
+displayName: given's own operating system experiment
 description: given's own operating system experiment
 logoURL: https://raw.githubusercontent.com/givensuman/goose/main/assets/logo.png
 license: Apache-2.0
