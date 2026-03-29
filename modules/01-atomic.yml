@@ -17,12 +17,12 @@ modules:
         - docker-ce
         - docker-ce-cli
         - docker-compose-plugin
-        - libvirt
         - podlet
         - podman-compose
         - podman-remote
-        - qemu-kvm
         - skopeo
+        - libvirt
+        - qemu-kvm
         - virt-manager
         - virt-viewer
         - virt-install

@@ -1,5 +1,6 @@
 image-name := "localhost/goose"
 recipe-file := "recipe.yml"
+system-dir := "/opt/goose"
 
 default:
     @just --list
@@ -28,3 +29,13 @@ clean:
 # View logs of the last system build
 logs:
     journalctl -u bluebuild --since "1 hour ago"
+
+# Move to system directory
+cd:
+    #!/usr/bin bash
+    cd {{ system-dir }}
+
+# Edit system declaratively
+edit:
+    #!/usr/bin bash
+    sudo $EDITOR {{ system-dir }}

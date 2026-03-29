@@ -31,6 +31,11 @@ lint:
     # Run shellcheck on all Bash scripts
     /usr/bin/find . -iname "*.sh" -type f -exec shellcheck "{}" ';'
 
+    just --check
+    for file in ./files/justfiles/*.just; do
+        just --check -f "$file"
+    done
+
 # Runs shfmt on all Bash scripts
 format:
     #!/usr/bin/env bash
@@ -42,6 +47,11 @@ format:
     fi
     # Run shfmt on all Bash scripts
     /usr/bin/find . -iname "*.sh" -type f -exec shfmt --write "{}" ';'
+
+    just --unstable --fmt
+    for file in ./files/justfiles/*.just; do
+        just --unstable --fmt -f "$file"
+    done
 
 # Validate main recipe file
 [group('Utility')]
