@@ -1,79 +1,55 @@
+host := "gandalf"
+user := "given"
+flake := "."
+
+# Show this help
 default:
     @just --list
 
-# sudoif bash function
-[group('Utility')]
-[private]
-sudoif command *args:
-    #!/usr/bin/bash
-    function sudoif(){
-        if [[ "${UID}" -eq 0 ]]; then
-            "$@"
-        elif [[ "$(command -v sudo)" && -n "${SSH_ASKPASS:-}" ]] && [[ -n "${DISPLAY:-}" || -n "${WAYLAND_DISPLAY:-}" ]]; then
-            /usr/bin/sudo --askpass "$@" || exit 1
-        elif [[ "$(command -v sudo)" ]]; then
-            /usr/bin/sudo "$@" || exit 1
-        else
-            exit 1
-        fi
-    }
-    sudoif {{ command }} {{ args }}
+# Build, activate, and symlink configuration files
+rebuild: switch sync-configs
 
-# Runs shell check on all Bash scripts
-lint:
-    #!/usr/bin/env bash
-    set -eoux pipefail
-    # Check if shellcheck is installed
-    if ! command -v shellcheck &> /dev/null; then
-        echo "shellcheck could not be found. Please install it."
-        exit 1
-    fi
-    # Run shellcheck on all Bash scripts
-    /usr/bin/find . -iname "*.sh" -type f -exec shellcheck "{}" ';'
+# Build and activate new system configuration
+[group('nix-wrapper')]
+switch args='':
+    sudo nixos-rebuild --flake '{{ flake }}#{{ host }}' switch {{ args }}
 
-    just --check
-    for file in ./files/justfiles/*.just; do
-        just --check -f "$file"
-    done
+# Build as a dry-run
+[group('nix-wrapper')]
+build args='':
+    sudo nixos-rebuild --flake '{{ flake }}#{{ host }}' build {{ args }}
 
-# Runs shfmt on all Bash scripts
-format:
-    #!/usr/bin/env bash
-    set -eoux pipefail
-    # Check if shfmt is installed
-    if ! command -v shfmt &> /dev/null; then
-        echo "shellcheck could not be found. Please install it."
-        exit 1
-    fi
-    # Run shfmt on all Bash scripts
-    /usr/bin/find . -iname "*.sh" -type f -exec shfmt --write "{}" ';'
+# Build and activate, with rollback on failure
+[group('nix-wrapper')]
+test args='':
+    sudo nixos-rebuild --flake '{{ flake }}#{{ host }}' test {{ args }}
 
-    just --unstable --fmt
-    for file in ./files/justfiles/*.just; do
-        just --unstable --fmt -f "$file"
-    done
+# Switch to previous generation
+[group('nix-wrapper')]
+rollback:
+    sudo /run/current-system/bin/switch-to-configuration switch
 
-# Validate main recipe file
-[group('Utility')]
-validate:
-    bluebuild validate --all-errors ./recipes/recipe.yml
+# Build documentation
+[group('nix-wrapper')]
+docs:
+    nixos-rebuild --flake '{{ flake }}#{{ host }}' build --build-llvm-tools
 
-# Remove build artifacts
-[group('Utility')]
+# Update flake inputs
+[group('nix-wrapper')]
+update:
+    nix flake update {{ flake }}
+
+# Clean nix store
+[group('nix-wrapper')]
 clean:
-    @sudo rm -rf Containerfile .bluebuild-scripts_*
+    @sudo nix-collect-garbage -d
 
-# Build image
-[group('BlueBuild')]
-build flags="": clean
-    bluebuild build ./recipes/recipe.yml {{ flags }}
+# Show current generations
+[group('nix-wrapper')]
+generations:
+    @nix-env -p /nix/var/nix/profiles/system --list-generations
 
-# Generate Containerfile output
-[group('BlueBuild')]
-generate flags="": clean
-    bluebuild generate -o Containerfile ./recipes/recipe.yml {{ flags }}
-
-# Attempt to build and rebase into image
-[group('BlueBuild')]
-switch flags="": clean
-    @sudo bluebuild switch -r ./recipes/recipe.yml {{ flags }}
+# Symlink dotfiles configs to ~/.config
+[group('scripts')]
+sync-configs:
+    bash ./scripts/symlink-configs.sh

@@ -1,14 +1,12 @@
-cosign.key
-bluebuild-scripts_*
-.bluebuild-scripts_*
-
 .DS_STORE
 *.iso
 *.iso-CHECKSUM
 upload/
 tmp/
-*.log
-_build_*
-output
-_build-*/**
-/.bluebuild-scripts_*
+
+# Ignore build outputs from performing a nix-build or `nix build` command
+result
+result-*
+
+# Ignore automatically generated direnv output
+.direnv.log
