@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
+
 set -euox pipefail
 
+# TODO: We're saving our Nix configuration in a ~/world directory
 DIR="$HOME/world/config"
 
 for cfg in "${DIR}"/*; do

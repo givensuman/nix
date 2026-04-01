@@ -15,11 +15,11 @@
     shellcheck
     shfmt
     tree-sitter
-    yazi
     zoxide
 
     # Programming languages
     bun
+    yarn
     deno
     nodejs_24
     python3

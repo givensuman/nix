@@ -7,7 +7,7 @@ default:
     @just --list
 
 # Build, activate, and symlink configuration files
-rebuild: switch sync-configs
+rebuild: switch symlink-configs
 
 # Build and activate new system configuration
 [group('nix-wrapper')]
@@ -51,5 +51,5 @@ generations:
 
 # Symlink dotfiles configs to ~/.config
 [group('scripts')]
-sync-configs:
+symlink-configs:
     bash ./scripts/symlink-configs.sh
