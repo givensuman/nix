@@ -2,13 +2,14 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running 'nixos-help').
 
-{ config, pkgs, inputs, ... }: {
+{ pkgs, ... }: {
   imports = [
     ./hardware-configuration.nix
 
     ./modules/containers.nix
     ./modules/desktop.nix
     ./modules/programming.nix
+    ./modules/styles.nix
     ./modules/system.nix
   ];
 

@@ -62,16 +62,6 @@
     # Apps
     ghostty
     bazaar
-
-    # Fonts
-    nerd-fonts.hack
-    nerd-fonts.jetbrains-mono
-    nerd-fonts.fira-code
-    fira-sans
-    inter
-    open-sans
-    roboto
-    ubuntu-sans
   ];
 
   # Use COSMIC desktop.
