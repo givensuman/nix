@@ -26,7 +26,7 @@
   environment.systemPackages = with pkgs; [
     fira-sans
     open-sans
-    roboto
     ubuntu-sans
+    roboto
   ];
 }
