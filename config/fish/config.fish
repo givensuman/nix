@@ -13,36 +13,14 @@ alias gg lazygit
 # fzf over files and open result in nvim
 alias f "fd --type f | fzf | sed 's/\ /\\ /g' | xargs nvim"
 
-function world
-    set -l world_dir $HOME/world
-    set -l justfile "$world_dir/Justfile"
-
-    if not test -d "$world_dir"
-        echo "world: directory not found: $world_dir" >&2
-        return 1
-    end
-
-    if not test -f "$justfile"
-        echo "world: Justfile not found: $justfile" >&2
-        return 1
-    end
-
-    if test (count $argv) -eq 0
-        command just --working-directory "$world_dir" --justfile "$justfile" --list
-        return $status
-    end
-
-    command just --working-directory "$world_dir" --justfile "$justfile" $argv
-end
-
 # hydro prompt
 set --global fish_prompt_pwd_dir_length 999
 set --global hydro_multiline true
 
 if set -q DISTROBOX_ENTER_PATH
-    set --global hydro_symbol_prompt "󰇥 [distrobox] "
+    set --global hydro_symbol_prompt "󰘧 [distrobox] "
 else
-    set --global hydro_symbol_prompt "󰇥 "
+    set --global hydro_symbol_prompt "󰘧 "
 end
 
 set --global hydro_symbol_start "\n"
