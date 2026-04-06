@@ -1,6 +1,6 @@
 (
     save_location: Pictures,
-    choice: Rectangle,
+    choice: Window,
     last_rectangle: Some((
         left: 330,
         top: 169,
