@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -euox pipefail
+set -euo pipefail
 
 SOURCE_DIR="$HOME/world/dots"
 OUTPUT_DIR="$HOME/backups"

@@ -42,19 +42,19 @@ update:
 # Clean nix store
 [group('nix-wrapper')]
 clean:
-    @sudo nix-collect-garbage -d
+    sudo nix-collect-garbage -d
 
 # Show current generations
 [group('nix-wrapper')]
 generations:
-    @nix-env -p /nix/var/nix/profiles/system --list-generations
+    nix-env -p /nix/var/nix/profiles/system --list-generations
 
 # Symlink dotfiles configs to ~/.config
 [group('scripts')]
 symlink-configs:
-    bash ./scripts/symlink-configs.sh
+    @bash ./scripts/symlink-configs.sh
 
 # Create timestamped backup of dotfiles
 [group('scripts')]
 backup-configs args='':
-    bash ./scripts/backup-configs.sh
+    @bash ./scripts/backup-configs.sh

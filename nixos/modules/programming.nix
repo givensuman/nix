@@ -15,13 +15,26 @@
     shellcheck
     shfmt
     tree-sitter
+    rust-analyzer
     zoxide
+
+    # Random LazyVim dependencies
+    imagemagick
+    mermaid-cli
+    sqlite
+    tmux
+    tectonic
 
     # Programming languages
     bun
     yarn
     deno
     nodejs_24
+    lua
+    ruby
+    php
+    jre8
+    julia-lts
     python3
     cargo
     rustc
@@ -35,8 +48,8 @@
     vimAlias = true;
   };
 
-  services.ollama = {
-    enable = true;
-    # loadModels = [ "gemma4:e4b" ];
-  };
+  # services.ollama = {
+  #   enable = true;
+  #   # loadModels = [ "gemma4:e4b" ];
+  # };
 }
