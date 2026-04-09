@@ -1,15 +1,30 @@
 #!/usr/bin/env bash
 set -euox pipefail
 
-DIR="$HOME/world/config"
+SOURCE_DIR="$HOME/world/dots"
+TARGET_DIR="$HOME/.config"
 
-for cfg in "${DIR}"/*; do
-	dst="$HOME/.config/$(basename $cfg)"
+if [[ ! -d "$SOURCE_DIR" ]]; then
+  echo "missing $SOURCE_DIR folder"
+	exit 1
+fi
 
-  mkdir -p "$HOME/.config"
-	if [ -e "$cfg" ]; then
-		rm -rf "$dst"
-		ln -s "$cfg" "$dst"
-		echo "Linked $dst -> $cfg"
-	fi
+mkdir -p "$TARGET_DIR"
+
+shopt -s nullglob
+entries=("$SOURCE_DIR"/*)
+shopt -u nullglob
+
+if [[ ${#entries[@]} -eq 0 ]]; then
+  echo "$SOURCE_DIR is empty, nothing to link"
+	exit 0
+fi
+
+for cfg in "${entries[@]}"; do
+	name="$(basename "$cfg")"
+	dst="$TARGET_DIR/$name"
+
+	rm -rf "$dst" &>/dev/null
+	ln -s "$cfg" "$dst" &>/dev/null
+	printf 'linked %s -> %s\n' "$dst" "$cfg"
 done
