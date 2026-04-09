@@ -34,4 +34,9 @@
     viAlias = true;
     vimAlias = true;
   };
+
+  services.ollama = {
+    enable = true;
+    # loadModels = [ "gemma4:e4b" ];
+  };
 }
