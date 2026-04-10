@@ -20,7 +20,7 @@ return {
     },
     {
       "<leader>as",
-      function() require("sidekick.cli").select(filter = { installed = true } }) end,
+      function() require("sidekick.cli").select() end,
       desc = "Select CLI",
     },
     {
@@ -30,8 +30,8 @@ return {
     },
     {
       "<leader>at",
-      function() require("sidekick.cli").send({ 
-        name = "opencode", 
+      function() require("sidekick.cli").send({
+        name = "opencode",
         msg = "{this}",
       }) end,
       mode = { "x", "n" },
@@ -47,7 +47,7 @@ return {
     },
     {
       "<leader>av",
-      function() require("sidekick.cli").send({ 
+      function() require("sidekick.cli").send({
         name = "opencode",
         msg = "{selection}",
       }) end,
