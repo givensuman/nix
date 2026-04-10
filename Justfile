@@ -1,51 +1,57 @@
 host := "gandalf"
-# user := "given"
 
 # Show this help
 default:
     @just --list
 
-# Build, activate, and symlink configuration files
+_go-sudo:
+  @sudo --validate
+
+# Rebuild system
 [group('util')]
-rebuild: switch symlink-configs
+rebuild: _go-sudo switch symlink-configs
+
+# Rebuild EVERYTHING; can be destructive
+[group('util')]
+rebuild-everything: _go-sudo switch symlink-configs post-build
 
 # Build and activate new system configuration
-[group('nix-wrapper')]
+[group('nix')]
 switch args='':
     sudo nixos-rebuild --flake '#{{ host }}' switch {{ args }}
 
 # Build as a dry-run
-[group('nix-wrapper')]
+[group('nix')]
 build args='':
     sudo nixos-rebuild --flake '#{{ host }}' build {{ args }}
 
 # Build and activate, with rollback on failure
-[group('nix-wrapper')]
+[group('nix')]
 test args='':
     sudo nixos-rebuild --flake '#{{ host }}' test {{ args }}
 
 # Switch to previous generation
-[group('nix-wrapper')]
+[group('nix')]
 rollback:
     sudo /run/current-system/bin/switch-to-configuration switch
 
 # Build documentation
-[group('nix-wrapper')]
+[group('nix')]
 docs:
     nixos-rebuild --flake '#{{ host }}' build --build-llvm-tools
 
 # Update flake inputs
-[group('nix-wrapper')]
+[group('nix')]
 update:
     nix flake update
 
 # Clean nix store
-[group('nix-wrapper')]
+[group('nix')]
 clean:
     sudo nix-collect-garbage -d
 
 # Show current generations
-[group('nix-wrapper')]
+[group('nix')]
 generations:
     nix-env -p /nix/var/nix/profiles/system --list-generations
 
@@ -57,4 +63,9 @@ symlink-configs:
 # Create timestamped backup of dotfiles
 [group('scripts')]
 backup-configs args='':
-    @bash ./scripts/backup-configs.sh
+    @bash ./scripts/backup-configs.sh {{ args }}
+
+# Run post-build steps; can be destructive
+[group('scripts')]
+post-build:
+    @bash ./scripts/post-build.sh

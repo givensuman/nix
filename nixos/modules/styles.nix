@@ -1,30 +1,40 @@
-{ pkgs, inputs, config, ... }: {
+{
+  pkgs,
+  inputs,
+  config,
+  ...
+}:
+{
   imports = [
     inputs.stylix.nixosModules.stylix
     inputs.catppuccin.nixosModules.catppuccin
   ];
 
-  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+  stylix = {
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+    fonts = {
+      sansSerif = {
+        package = pkgs.inter;
+        name = "Inter";
+      };
 
-  stylix.fonts = {
-    sansSerif = {
-      package = pkgs.inter;
-      name = "Inter";
-    };
+      monospace = {
+        package = pkgs.nerd-fonts.jetbrains-mono;
+        name = "JetBrains Mono Nerd Font";
+      };
 
-    monospace = {
-      package = pkgs.nerd-fonts.jetbrains-mono;
-      name = "JetBrains Mono Nerd Font";
-    };
-
-    emoji = {
-      package = pkgs.noto-fonts-color-emoji;
-      name = "Noto Color Emoji";
+      emoji = {
+        package = pkgs.noto-fonts-color-emoji;
+        name = "Noto Color Emoji";
+      };
+      serif = config.stylix.fonts.sansSerif;
     };
   };
-  stylix.fonts.serif = config.stylix.fonts.sansSerif;
 
   environment.systemPackages = with pkgs; [
+    inter
+    nerd-fonts.jetbrains-mono
+    noto-fonts-color-emoji
     fira-sans
     open-sans
     ubuntu-sans
@@ -36,7 +46,6 @@
     accent = "lavender";
     flavor = "mocha";
 
-    cursors.enable = true;
     gtk.icon.enable = true;
     grub.enable = true;
     tty.enable = true;

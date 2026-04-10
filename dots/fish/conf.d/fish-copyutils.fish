@@ -15,13 +15,12 @@ end
 function _fish_copyutils_uninstall --on-event fish-copyutils_uninstall
     functions --erase copyfile
     functions --erase copypath
-    functions --erase _fish_copyutils_copybuffer
     if set -q copybuffer_keybind
         bind --erase $copybuffer_keybind
+        set --erase copybuffer_keybind
     else
         bind --erase \co
     end
-    set --erase copybuffer_keybind
 end
 
 function _fish_copyutils_update --on-event fish-copyutils_update

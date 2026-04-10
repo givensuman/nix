@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   programs.fish = {
     enable = true;
     useBabelfish = true;
@@ -48,7 +49,7 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-  
+
   # Allow real-time priority for audio applications.
   security.pam.loginLimits = [
     {

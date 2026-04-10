@@ -18,13 +18,6 @@
     rust-analyzer
     zoxide
 
-    # Random LazyVim dependencies
-    imagemagick
-    mermaid-cli
-    sqlite
-    tmux
-    tectonic
-
     # Programming languages
     bun
     yarn
@@ -40,13 +33,6 @@
     rustc
     go
   ];
-
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
-  };
 
   # services.ollama = {
   #   enable = true;

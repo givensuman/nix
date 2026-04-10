@@ -1,9 +1,9 @@
 [credential "https://github.com"]
-	helper = 
-	helper = !/home/given/.nix-profile/bin/gh auth git-credential
+	helper =
+	helper = !/run/current-system/sw/bin/gh auth git-credential
 [credential "https://gist.github.com"]
-	helper = 
-	helper = !/home/given/.nix-profile/bin/gh auth git-credential
+	helper =
+	helper = !/run/current-system/sw/bin/gh auth git-credential
 [user]
 	name = givensuman
 	email = givensuman@duck.com
