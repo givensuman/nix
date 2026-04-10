@@ -13,6 +13,10 @@
       name = "gnome-nightly";
       location = "https://nightly.gnome.org/gnome-nightly.flatpakrepo";
     }
+    {
+      name = "cosmic";
+      location = "https://apt.pop-os.org/cosmic/cosmic.flatpakrep";
+    }
   ];
   services.flatpak.packages = [
     "org.mozilla.firefox"
