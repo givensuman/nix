@@ -49,7 +49,7 @@
     accent = "lavender";
     flavor = "mocha";
 
-    cursor.enable = true;
+    # cursors.enable = true;
     gtk.icon.enable = true;
     grub.enable = true;
     tty.enable = true;
