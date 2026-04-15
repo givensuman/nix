@@ -33,5 +33,6 @@
     # Neovim dependencies
     luajit
     luajitPackages.rocks-nvim
+    statix
   ];
 }

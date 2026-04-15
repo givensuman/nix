@@ -1,4 +1,5 @@
-{ pkgs, inputs, ... }: {
+{ pkgs, inputs, ... }:
+{
   imports = [
     inputs.flatpaks.nixosModules.nix-flatpak
   ];
@@ -31,7 +32,7 @@
     "io.github.flattool.Warehouse"
     "io.github.flattool.Ignition"
     # GTK/GNOME desktop applications
-    "org.gnome.baobab"    # Disk Usage Analyzer
+    "org.gnome.baobab" # Disk Usage Analyzer
     "org.gnome.Boxes"
     "org.gnome.Calendar"
     "org.gnome.Characters"
@@ -40,11 +41,11 @@
     "org.gnome.Firmware"
     "org.gnome.font-viewer"
     "org.gnome.Logs"
-    "org.gnome.Loupe"     # Image Viewer
+    "org.gnome.Loupe" # Image Viewer
     "org.gnome.Maps"
-    "org.gnome.Papers"    # Document Viewer
-    "org.gnome.Showtime"  # Video Player
-    "org.gnome.Snapshot"  # Camera
+    "org.gnome.Papers" # Document Viewer
+    "org.gnome.Showtime" # Video Player
+    "org.gnome.Snapshot" # Camera
     "org.gnome.TextEditor"
     "org.gnome.Weather"
     "org.gtk.Gtk3theme.adw-gtk3"
@@ -52,8 +53,15 @@
   ];
   services.flatpak.overrides = {
     global = {
-      Context.filesystems = ["xdg-config/gtk-3.0:ro" "xdg-config/gtk-4.0:ro"];
-      Context.sockets = ["wayland" "!x11" "!fallback-x11"];
+      Context.filesystems = [
+        "xdg-config/gtk-3.0:ro"
+        "xdg-config/gtk-4.0:ro"
+      ];
+      Context.sockets = [
+        "wayland"
+        "!x11"
+        "!fallback-x11"
+      ];
       Environments = {
         GDK_SCALE = "1";
         QT_SCALE_FACTOR = "1";
@@ -63,6 +71,7 @@
       };
     };
   };
+
   environment.systemPackages = with pkgs; [
     # Apps
     ghostty
@@ -83,10 +92,10 @@
   services.desktopManager.cosmic.enable = true;
   services.system76-scheduler.enable = true;
   environment.cosmic.excludePackages = with pkgs; [
-    cosmic-edit   # Prefer GTK
+    cosmic-edit # Prefer GTK
     cosmic-player
     cosmic-reader
-    cosmic-store  # Prefer Bazaar
-    cosmic-term   # Prefer Ghostty
+    cosmic-store # Prefer Bazaar
+    cosmic-term # Prefer Ghostty
   ];
 }

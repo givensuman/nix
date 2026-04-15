@@ -35,7 +35,6 @@
       --summary 2>/dev/null \
     )"
   '';
-  programs.git.enable = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;

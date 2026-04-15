@@ -31,21 +31,25 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    inter
-    nerd-fonts.jetbrains-mono
-    noto-fonts-color-emoji
-    fira-sans
-    open-sans
-    ubuntu-sans
-    roboto
-  ];
+  fonts = {
+    enableDefaultPackages = true;
+    packages = with pkgs; [
+      inter
+      nerd-fonts.jetbrains-mono
+      noto-fonts-color-emoji
+      fira-sans
+      open-sans
+      ubuntu-sans
+      roboto
+    ];
+  };
 
   catppuccin = {
     enable = true;
     accent = "lavender";
     flavor = "mocha";
 
+    cursor.enable = true;
     gtk.icon.enable = true;
     grub.enable = true;
     tty.enable = true;
