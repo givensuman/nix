@@ -1,3 +1,4 @@
+# Everything related to the desktop environment and/or applications goes here.
 { pkgs, inputs, ... }:
 {
   imports = [
@@ -76,15 +77,6 @@
     # Apps
     ghostty
     bazaar
-
-    # Fonts
-    inter
-    nerd-fonts.jetbrains-mono
-    noto-fonts-color-emoji
-    ubuntu-sans
-    fira-sans
-    fira-mono
-    fira-code
   ];
 
   # Use COSMIC desktop.

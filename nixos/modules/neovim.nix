@@ -1,3 +1,4 @@
+# Everything related to Neovim goes here.
 { pkgs, ... }:
 {
   programs.neovim = {
@@ -16,6 +17,9 @@
     prettier
     markdown-toc
     markdownlint-cli2
+    shellcheck
+    shfmt
+    rust-analyzer
 
     # nvim-treesitter
     tree-sitter
@@ -30,7 +34,7 @@
     # Snacks.picker
     sqlite
 
-    # Neovim dependencies
+    # ...
     luajit
     luajitPackages.rocks-nvim
     statix

@@ -10,6 +10,7 @@ set --global MANPAGER "nvim +Man!"
 
 alias box distrobox
 alias gg lazygit
+alias dd lazydocker
 # fzf over files and open result in nvim
 alias f "fd --type f | fzf | sed 's/\ /\\ /g' | xargs nvim"
 

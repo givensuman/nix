@@ -1,8 +1,6 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running 'nixos-help').
-
-{ pkgs, ... }: {
+# NixOS configuration and main entry point.
+# See configuration.nix(5) man page or `nixos-help`
+{ _ }: {
   imports = [
     ./hardware-configuration.nix
 
@@ -13,6 +11,7 @@
     ./modules/programming.nix
     ./modules/styles.nix
     ./modules/system.nix
+    ./modules/world.nix
   ];
 
   # Bootloader.
@@ -65,19 +64,6 @@
     description = "given";
     extraGroups = [ "networkmanager" "wheel" ];
   };
-
-  # Launch Fish shell for interactive Bash sessions.
-  # https://nixos.wiki/wiki/Fish#Setting_fish_as_your_shell
-  programs.bash = {
-    interactiveShellInit = ''
-      if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
-      then
-        shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
-        exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
-      fi
-    '';
-  };
-  programs.fish.enable = true;
 
   # Allow unfree packages.
   nixpkgs.config.allowUnfree = true;
