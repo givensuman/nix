@@ -2,6 +2,7 @@
 # See configuration.nix(5) man page or `nixos-help`
 {
   imports = [
+    ./modules/applications.nix
     ./modules/cli.nix
     ./modules/containers.nix
     ./modules/desktop.nix

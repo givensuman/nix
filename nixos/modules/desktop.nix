@@ -1,4 +1,4 @@
-# Everything related to the desktop environment and/or applications goes here.
+# Everything related to the desktop environment and/or default applications goes here.
 { pkgs, inputs, ... }:
 {
   imports = [
@@ -20,13 +20,11 @@
       location = "https://apt.pop-os.org/cosmic/cosmic.flatpakrep";
     }
   ];
+
   services.flatpak.packages = [
+    # Desktop applications
     "org.mozilla.firefox"
-    "com.spotify.Client"
     "io.podman_desktop.PodmanDesktop"
-    "io.github.milkshiift.GoofCord"
-    "org.localsend.localsend_app"
-    "de.haeckerfelix.Fragments"
     # Flatpak utilities
     "com.github.tchx84.Flatseal"
     "io.github.flattool.Warehouse"
