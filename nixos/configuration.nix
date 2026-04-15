@@ -1,17 +1,18 @@
 # NixOS configuration and main entry point.
 # See configuration.nix(5) man page or `nixos-help`
-{ _ }: {
+{
   imports = [
-    ./hardware-configuration.nix
-
+    ./modules/cli.nix
     ./modules/containers.nix
     ./modules/desktop.nix
     ./modules/framework.nix
+    ./modules/languages.nix
     ./modules/neovim.nix
-    ./modules/programming.nix
     ./modules/styles.nix
     ./modules/system.nix
     ./modules/world.nix
+
+    ./hardware-configuration.nix
   ];
 
   # Bootloader.
@@ -62,13 +63,19 @@
   users.users.given = {
     isNormalUser = true;
     description = "given";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
   };
 
   # Allow unfree packages.
   nixpkgs.config.allowUnfree = true;
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   system.stateVersion = "25.11";
 }

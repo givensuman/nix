@@ -11,9 +11,9 @@ _go-sudo:
 [group('util')]
 rebuild: _go-sudo switch symlink-configs
 
-# Rebuild EVERYTHING; can be destructive
+# Rebuild system and destructively rebuild program caches
 [group('util')]
-rebuild-everything: _go-sudo switch symlink-configs post-build
+teardown-and-rebuild: _go-sudo switch symlink-configs teardown-then-build
 
 # Build and activate new system configuration
 [group('nix')]
@@ -65,7 +65,7 @@ symlink-configs:
 backup-configs args='':
     @bash ./scripts/backup-configs.sh {{ args }}
 
-# Run post-build steps; can be destructive
+# Destructively rebuild program caches
 [group('scripts')]
-post-build:
-    @bash ./scripts/post-build.sh
+teardown-then-build:
+    @bash ./scripts/teardown-then-build.sh

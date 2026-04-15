@@ -54,21 +54,27 @@
   ];
 
   environment.systemPackages = with pkgs; [
+    # Requests
     wget
     curl
+    # Archival
     unzip
     zip
     p7zip
     gnutar
-    git
+    # Runners
+    gnumake
     just
+    # Essentials for life not to suck
     gcc
+    git
+    less
+    util-linux
+    wl-clipboard
+    # Internals I've never used...
     libcap
     strace
     lsof
-    util-linux
-    wl-clipboard
-    less
   ];
 
   # Provide suggestions of packages to install when a command is not found.

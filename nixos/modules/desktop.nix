@@ -27,7 +27,6 @@
     "io.github.milkshiift.GoofCord"
     "org.localsend.localsend_app"
     "de.haeckerfelix.Fragments"
-    # "com.jeffser.Alpaca"
     # Flatpak utilities
     "com.github.tchx84.Flatseal"
     "io.github.flattool.Warehouse"
