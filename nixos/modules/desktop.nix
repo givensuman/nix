@@ -17,14 +17,13 @@
     }
     {
       name = "cosmic";
-      location = "https://apt.pop-os.org/cosmic/cosmic.flatpakrep";
+      location = "https://apt.pop-os.org/cosmic/cosmic.flatpakrepo";
     }
   ];
 
   services.flatpak.packages = [
     # Desktop applications
     "org.mozilla.firefox"
-    "io.podman_desktop.PodmanDesktop"
     # Flatpak utilities
     "com.github.tchx84.Flatseal"
     "io.github.flattool.Warehouse"

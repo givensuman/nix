@@ -1,5 +1,6 @@
 # Everything related to the CLI goes here.
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   environment.systemPackages = with pkgs; [
     bat
     bottom

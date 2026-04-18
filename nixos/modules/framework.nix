@@ -1,5 +1,6 @@
 # Hardware configuration for Frameowkr 13 laptop.
-{ inputs, ...}: {
+{ inputs, ... }:
+{
   imports = [
     inputs.hardware.nixosModules.framework-13-7040-amd
   ];

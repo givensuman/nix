@@ -9,5 +9,6 @@
     "io.github.milkshiift.GoofCord"
     "org.localsend.localsend_app"
     "de.haeckerfelix.Fragments"
+    "io.podman_desktop.PodmanDesktop"
   ];
 }

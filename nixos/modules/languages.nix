@@ -15,9 +15,11 @@
     julia-lts
     mitscheme
     python3
+    uv
     cargo
     rustc
     go
     zig
   ];
+
 }
