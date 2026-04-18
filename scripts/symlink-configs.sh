@@ -22,6 +22,10 @@ fi
 
 for cfg in "${entries[@]}"; do
 	name="$(basename "$cfg")"
+  if [[ $name == *.bak ]]; then
+    continue
+  fi
+
 	dst="$TARGET_DIR/$name"
 
 	rm -rf "$dst" &>/dev/null

@@ -6,7 +6,6 @@ set --global EDITOR nvim
 function edit
     $EDITOR $argv
 end
-set --global MANPAGER "nvim +Man!"
 
 alias box distrobox
 alias gg lazygit
