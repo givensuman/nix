@@ -1,7 +1,8 @@
 # Everything related to containerization goes here.
 # https://nixos.wiki/wiki/Podman
 # https://nixos.wiki/wiki/Docker
-{ config, pkgs, ... }: {
+{ pkgs, ... }:
+{
   # Enable common container config files in /etc/containers.
   virtualisation.containers.enable = true;
   virtualisation = {
@@ -24,6 +25,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    devbox
     distrobox
     dive
     skopeo
