@@ -17,10 +17,11 @@ alias f "fd --type f | fzf | sed 's/\ /\\ /g' | xargs nvim"
 set --global fish_prompt_pwd_dir_length 999
 set --global hydro_multiline true
 
+set --local symbol " "
 if set -q DISTROBOX_ENTER_PATH
-    set --global hydro_symbol_prompt "󰘧 [distrobox] "
+    set --global hydro_symbol_prompt "$symbol [distrobox] "
 else
-    set --global hydro_symbol_prompt "󰘧 "
+    set --global hydro_symbol_prompt "$symbol"
 end
 
 set --global hydro_symbol_start "\n"

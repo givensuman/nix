@@ -18,6 +18,12 @@
     '';
   };
 
+  programs.direnv = {
+    enable = true;
+    enableBashIntegration = true;
+    enableFishIntegration = true;
+  };
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 

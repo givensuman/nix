@@ -22,4 +22,7 @@
     zig
   ];
 
+  environment.variables = {
+    GOPATH = "$HOME/.go";
+  };
 }

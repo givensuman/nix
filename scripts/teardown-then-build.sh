@@ -10,3 +10,6 @@ rm -rf ~/.local/state/nvim
 rm -rf ~/.cache/nvim
 
 nvim --headless "+Lazy! sync" +qa
+
+# bat
+bat cache --build

@@ -8,6 +8,13 @@
     defaultEditor = true;
   };
 
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      vimPlugins.markdown-preview-nvim
+    ];
+  };
+
   environment.systemPackages = with pkgs; [
     # copilot.nvim
     copilot-language-server
