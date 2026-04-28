@@ -12,10 +12,10 @@
     "de.haeckerfelix.Fragments"
     "io.podman_desktop.PodmanDesktop"
     # Additional
-    "dev.edfloreshz.Tasks"
-    "org.nickvision.tubeconverter"
-    "io.github.kriptolix.Poliedros"
-    "de.til7701.Puzzled"
+    "dev.edfloreshz.Tasks" # To-Do list
+    "org.nickvision.tubeconverter" # Media downloader
+    "io.github.kriptolix.Poliedros" # Dice roller
+    "de.til7701.Puzzled" # Lil' puzzles
   ];
 
   environment.systemPackages = with pkgs; [

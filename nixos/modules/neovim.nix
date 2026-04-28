@@ -15,6 +15,7 @@
     ];
   };
 
+  # :checkhealth
   environment.systemPackages = with pkgs; [
     # copilot.nvim
     copilot-language-server
